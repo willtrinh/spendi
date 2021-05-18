@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   List as MUIList,
   ListItem,
@@ -9,32 +9,34 @@ import {
   IconButton,
   Slide,
 } from "@material-ui/core";
-import { Delete, MoneyOff } from "@material-ui/icons";
+import { Delete, AttachMoney } from "@material-ui/icons";
+import { AppContext } from "../../../context/context.js";
 import useStyles from "./styles.js";
 import moment from "moment";
 const List = () => {
   const classes = useStyles();
+  const { deleteTransaction } = useContext(AppContext);
   const transactions = [
     {
       id: 1,
       type: "Income",
       category: "Salary",
       amount: 50,
-      date: moment().format("lll"),
+      date: moment().format("ll"),
     },
     {
       id: 2,
       type: "Expense",
       category: "Gym",
       amount: 100,
-      date: moment().format("lll"),
+      date: moment().format("ll"),
     },
     {
       id: 3,
       type: "Expense",
       category: "Grocery",
       amount: 100,
-      date: moment().format("lll"),
+      date: moment().format("ll"),
     },
   ];
 
@@ -57,7 +59,7 @@ const List = () => {
                     : classes.avatarExpense
                 }
               >
-                <MoneyOff />
+                <AttachMoney />
               </Avatar>
             </ListItemAvatar>
             <ListItemText
