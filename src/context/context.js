@@ -19,12 +19,14 @@ export const Provider = ({ children }) => {
     // of the transaction with provided transaction
     dispatch({ type: 'ADD_TRANSACTION', payload: transaction });
   }
+  // console.log(transactions);
 
   return (
     // transferring deleteTransactions and addTransaction to the entire state
     <AppContext.Provider value={{
       deleteTransactions,
-      addTransaction
+      addTransaction,
+      transactions,
     }}>
       {children}
     </AppContext.Provider>

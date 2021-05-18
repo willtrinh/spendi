@@ -13,7 +13,6 @@ const contextReducer = (state, action) => {
     default:
       // simply return the state if no matched case
       return state;
-
   }
 }
 
