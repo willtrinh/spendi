@@ -20,7 +20,21 @@ const List = () => {
       type: "Income",
       category: "Salary",
       amount: 50,
-      date: moment().calendar(),
+      date: moment().format("lll"),
+    },
+    {
+      id: 2,
+      type: "Expense",
+      category: "Gym",
+      amount: 100,
+      date: moment().format("lll"),
+    },
+    {
+      id: 3,
+      type: "Expense",
+      category: "Grocery",
+      amount: 100,
+      date: moment().format("lll"),
     },
   ];
 
