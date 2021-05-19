@@ -43,7 +43,7 @@ const List = () => {
               primary={transaction.category}
               secondary={`$${transaction.amount} - ${moment(
                 transaction.date
-              ).format("ll")}`}
+              ).format("MMM DD")}`}
             />
             <ListItemSecondaryAction>
               <IconButton

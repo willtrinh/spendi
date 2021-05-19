@@ -14,7 +14,7 @@ const Main = () => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <CardHeader title="Expense Tracker" />
+      <CardHeader title="Spendy" align="center" justify="center" />
       <CardContent>
         <Typography align="center" variant="h5">
           Total Balance $100

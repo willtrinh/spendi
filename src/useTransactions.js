@@ -10,9 +10,26 @@ const useTransactions = (title) => {
   const categories = title === 'Income' ? incomeCategories : expenseCategories;
   console.log({ transactionType, total, categories });
 
-  transactionType.forEach((type) => {
-    const category = categories.find((cat) => cat.type === type.category);
+  // sum up all categories to display in pie chart data
+  transactionType.forEach((transaction) => {
+    const category = categories.find((cat) => cat.type === transaction.category);
+    if (category) {
+      category.amount += transaction.category;
+    }
   })
 
+  // filter out categories with amount = 0
+  const filteredCategories = categories.filter((cat) => cat.amount > 0);
 
+  const chartData = {
+    datasets: [{
+      data: filteredCategories.map((cat) => cat.amount),
+      backgroundColor: filteredCategories.map((cat) => cat.color),
+    }],
+    labels: filteredCategories.map((cat) => cat.type)
+  }
+
+  return { filteredCategories, total, chartData };
 }
+
+export default useTransactions;
