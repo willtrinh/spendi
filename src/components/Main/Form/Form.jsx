@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   TextField,
   Typography,
@@ -9,7 +9,9 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
+import { useSpeechContext } from "@speechly/react-client";
 import DateFnsUtils from "@date-io/date-fns";
+import { parseISO } from "date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -22,24 +24,24 @@ import {
   expenseCategories,
 } from "../../../constants/categories.js";
 // import moment from "moment";
-// import formatDate from "../../../utils/formatDate.js";
+import formatDate from "../../../utils/formatDate.js";
 const initialState = {
   amount: "",
   category: "",
   type: "Income",
-  date: new Date(),
+  date: formatDate(new Date()),
 };
 
 const Form = () => {
   const classes = useStyles();
   const [formData, setFormData] = useState(initialState);
   const { addTransaction } = useContext(AppContext);
-  const [selectedDate, setSelectedDate] = useState(initialState.date);
+  const { segment } = useSpeechContext();
 
-  const handleDateChange = (date) => {
-    formData.date = date;
-    setSelectedDate(date);
-  };
+  // const handleDateChange = (date) => {
+  //   formData.date = date;
+  //   setFormData({ ...formData, date });
+  // };
 
   const createTransaction = () => {
     const transaction = {
@@ -52,13 +54,53 @@ const Form = () => {
     setFormData(initialState);
   };
 
+  useEffect(() => {
+    // check if segment exists, then listen to intent and fill in formData
+    if (segment) {
+      if (segment.intent.intent === "add_expense") {
+        setFormData({ ...formData, type: "Expense" });
+      } else if (segment.intent.intent === "add_income") {
+        setFormData({ ...formData, type: "Income" });
+      } else if (
+        segment.isFinal &&
+        segment.intent.intent === "create_transaction"
+      ) {
+        return createTransaction();
+      } else if (
+        segment.isFinal &&
+        segment.intent.intent === "cancel_transaction"
+      ) {
+        return setFormData(initialState);
+      }
+
+      segment.entities.forEach((e) => {
+        const category = `${e.value.charAt(0)}${e.value
+          .slice(1)
+          .toLowerCase()}`;
+        switch (e.type) {
+          case "amount":
+            setFormData({ ...formData, amount: e.value });
+            break;
+          case "category":
+            setFormData({ ...formData, category });
+            break;
+          case "date":
+            setFormData({ ...formData, date: e.value });
+            break;
+          default:
+            break;
+        }
+      });
+    }
+  }, [segment]);
+
   const selectedCategories =
     formData.type === "Income" ? incomeCategories : expenseCategories;
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography align="center" variant="subtitle2" gutterBottom>
-          ...
+          {segment && segment.words.map((word) => word.value).join(" ")}
         </Typography>
       </Grid>
       <Grid item xs={6}>
@@ -100,18 +142,25 @@ const Form = () => {
         />
       </Grid>
       <Grid item xs={6}>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             id="date-picker-dialog"
             label="Date"
             format="MM/dd/yyyy"
-            value={selectedDate}
+            value={parseISO(formData.date)}
             onChange={handleDateChange}
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}
           />
-        </MuiPickersUtilsProvider>
+        </MuiPickersUtilsProvider> */}
+        <TextField
+          fullWidth
+          label="Date"
+          type="date"
+          value={formData.date}
+          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+        />
       </Grid>
       <Button
         className={classes.button}
