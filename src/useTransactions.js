@@ -6,15 +6,15 @@ const useTransactions = (title) => {
   resetCategories();
   const { transactions } = useContext(AppContext);
   const transactionType = transactions.filter((transaction) => transaction.type === title);
-  const total = transactionType.reduce((acc, currentVal) => acc += currentVal.amount, 0);
+  const total = transactionType.reduce((acc, currVal) => acc += currVal.amount, 0);
   const categories = title === 'Income' ? incomeCategories : expenseCategories;
-  console.log({ transactionType, total, categories });
+  // console.log({ transactionType, total, categories });
 
   // sum up all categories to display in pie chart data
   transactionType.forEach((transaction) => {
     const category = categories.find((cat) => cat.type === transaction.category);
     if (category) {
-      category.amount += transaction.category;
+      category.amount += transaction.amount;
     }
   })
 
@@ -23,12 +23,12 @@ const useTransactions = (title) => {
 
   const chartData = {
     datasets: [{
-      data: filteredCategories.map((cat) => cat.amount),
-      backgroundColor: filteredCategories.map((cat) => cat.color),
+      data: filteredCategories.map((c) => c.amount),
+      backgroundColor: filteredCategories.map((c) => c.color),
     }],
-    labels: filteredCategories.map((cat) => cat.type)
-  }
-
+    labels: filteredCategories.map((c) => c.type),
+  };
+  console.log(chartData);
   return { filteredCategories, total, chartData };
 }
 
