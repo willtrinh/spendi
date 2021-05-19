@@ -8,7 +8,7 @@ export const Provider = ({ children }) => {
   const [transactions, dispatch] = useReducer(contextReducer, initialState);
 
   // Action Creators
-  const deleteTransactions = (id) => {
+  const deleteTransaction = (id) => {
     // dispatch an action that would handle deletion 
     // of the transaction with provided transaction id
     dispatch({ type: 'DELETE_TRANSACTION', payload: id });
@@ -22,9 +22,9 @@ export const Provider = ({ children }) => {
   // console.log(transactions);
 
   return (
-    // transferring deleteTransactions and addTransaction to the entire state
+    // transferring deleteTransaction and addTransaction to the entire state
     <AppContext.Provider value={{
-      deleteTransactions,
+      deleteTransaction,
       addTransaction,
       transactions,
     }}>

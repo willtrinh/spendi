@@ -61,6 +61,7 @@ const Form = () => {
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
             }
+            required
           >
             <MenuItem value="business">Business</MenuItem>
             <MenuItem value="salary">Salary</MenuItem>

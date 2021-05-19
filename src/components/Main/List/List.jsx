@@ -24,7 +24,7 @@ const List = () => {
           direction="down"
           in
           mountOnEnter
-          unMountOnExit
+          unmountOnExit
           key={transaction.id}
         >
           <ListItem>
@@ -44,7 +44,11 @@ const List = () => {
               secondary={`$${transaction.amount} - ${transaction.date}`}
             />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick="">
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() => deleteTransaction(transaction.id)}
+              >
                 <Delete />
               </IconButton>
             </ListItemSecondaryAction>
