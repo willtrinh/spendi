@@ -1,12 +1,10 @@
 category_income = [
     Business
     Investments
-    Extra income
-    Deposits
-    Lottery
-    Gifts
     Salary
+    Deposit
     Savings
+    Cash
     Rental income
 ]
 category_expense = [
@@ -19,8 +17,9 @@ category_expense = [
     House
     Entertainment
     Phone
+    Internet
     Pets
-    Other
+    Others
 ]
 
 *create_transaction [Create|Finish|Save] {transaction}

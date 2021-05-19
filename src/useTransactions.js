@@ -8,7 +8,6 @@ const useTransactions = (title) => {
   const transactionType = transactions.filter((transaction) => transaction.type === title);
   const total = transactionType.reduce((acc, currVal) => acc += currVal.amount, 0);
   const categories = title === 'Income' ? incomeCategories : expenseCategories;
-  // console.log({ transactionType, total, categories });
 
   // sum up all categories to display in pie chart data
   transactionType.forEach((transaction) => {
@@ -25,10 +24,11 @@ const useTransactions = (title) => {
     datasets: [{
       data: filteredCategories.map((c) => c.amount),
       backgroundColor: filteredCategories.map((c) => c.color),
-      hoverOffset: 7,
+      hoverOffset: 5,
     }],
     labels: filteredCategories.map((c) => c.type),
   };
+
   return { filteredCategories, total, chartData };
 }
 
