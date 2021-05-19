@@ -29,7 +29,7 @@ const initialState = {
   amount: "",
   category: "",
   type: "Income",
-  date: formatDate(new Date()),
+  date: "",
 };
 
 const Form = () => {
@@ -38,12 +38,13 @@ const Form = () => {
   const { addTransaction } = useContext(AppContext);
   const { segment } = useSpeechContext();
 
-  // const handleDateChange = (date) => {
-  //   formData.date = date;
-  //   setFormData({ ...formData, date });
-  // };
-
   const createTransaction = () => {
+    if (
+      Number.isNaN(Number(formData.amount)) ||
+      formData.amount < 1 ||
+      !formData.date.includes("-")
+    )
+      return;
     const transaction = {
       ...formData,
       amount: Number(formData.amount),
@@ -82,7 +83,13 @@ const Form = () => {
             setFormData({ ...formData, amount: e.value });
             break;
           case "category":
-            setFormData({ ...formData, category });
+            if (incomeCategories.map((ic) => ic.type).includes(category)) {
+              setFormData({ ...formData, type: "Income", category });
+            } else if (
+              expenseCategories.map((ic) => ic.type).includes(category)
+            ) {
+              setFormData({ ...formData, type: "Expense", category });
+            }
             break;
           case "date":
             setFormData({ ...formData, date: e.value });
@@ -91,6 +98,16 @@ const Form = () => {
             break;
         }
       });
+      // automatically create new transaction if all fields are filled in
+      if (
+        segment.isFinal &&
+        formData.amount &&
+        formData.category &&
+        formData.type &&
+        formData.date
+      ) {
+        createTransaction();
+      }
     }
   }, [segment]);
 
@@ -158,6 +175,9 @@ const Form = () => {
           fullWidth
           label="Date"
           type="date"
+          InputLabelProps={{
+            shrink: true,
+          }}
           value={formData.date}
           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
         />
