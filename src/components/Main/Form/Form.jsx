@@ -100,14 +100,6 @@ const Form = () => {
         />
       </Grid>
       <Grid item xs={6}>
-        {/* <TextField
-          type="date"
-          label="Date"
-          fullWidth
-          value={formData.date}
-          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-        />
-         */}
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             id="date-picker-dialog"
