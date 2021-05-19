@@ -10,12 +10,13 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import { useSpeechContext } from "@speechly/react-client";
-import DateFnsUtils from "@date-io/date-fns";
-import { parseISO } from "date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import SnackbarMsg from "../../Snackbar/Snackbar";
+// import DateFnsUtils from "@date-io/date-fns";
+// import { parseISO } from "date-fns";
+// import {
+//   MuiPickersUtilsProvider,
+//   KeyboardDatePicker,
+// } from "@material-ui/pickers";
 import { AppContext } from "../../../context/context.js";
 import { v4 as uuidv4 } from "uuid";
 import useStyles from "./styles.js";
@@ -24,7 +25,7 @@ import {
   expenseCategories,
 } from "../../../constants/categories.js";
 // import moment from "moment";
-import formatDate from "../../../utils/formatDate.js";
+// import formatDate from "../../../utils/formatDate.js";
 const initialState = {
   amount: "",
   category: "",
@@ -35,6 +36,7 @@ const initialState = {
 const Form = () => {
   const classes = useStyles();
   const [formData, setFormData] = useState(initialState);
+  const [open, setOpen] = useState(false);
   const { addTransaction } = useContext(AppContext);
   const { segment } = useSpeechContext();
 
@@ -42,7 +44,8 @@ const Form = () => {
     if (
       Number.isNaN(Number(formData.amount)) ||
       formData.amount < 1 ||
-      !formData.date.includes("-")
+      !formData.date.includes("-") ||
+      formData.category === ""
     )
       return;
     const transaction = {
@@ -50,6 +53,7 @@ const Form = () => {
       amount: Number(formData.amount),
       id: uuidv4(),
     };
+    setOpen(true);
     addTransaction(transaction);
     // reset to initial state so user can add new transaction
     setFormData(initialState);
@@ -115,6 +119,7 @@ const Form = () => {
     formData.type === "Income" ? incomeCategories : expenseCategories;
   return (
     <Grid container spacing={2}>
+      <SnackbarMsg open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         <Typography align="center" variant="subtitle2" gutterBottom>
           {segment && segment.words.map((word) => word.value).join(" ")}
