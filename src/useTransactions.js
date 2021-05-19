@@ -25,10 +25,10 @@ const useTransactions = (title) => {
     datasets: [{
       data: filteredCategories.map((c) => c.amount),
       backgroundColor: filteredCategories.map((c) => c.color),
+      hoverOffset: 7,
     }],
     labels: filteredCategories.map((c) => c.type),
   };
-  console.log(chartData);
   return { filteredCategories, total, chartData };
 }
 
