@@ -3,6 +3,7 @@ import {
   incomeCategories,
   expenseCategories,
 } from "../../constants/categories.js";
+import MicIcon from "@material-ui/icons/Mic";
 import useStyles from "./styles.js";
 const isIncome = Math.round(Math.random());
 const amount = Math.round(Math.random() * 1000) + 50;
@@ -17,8 +18,19 @@ const InfoCard = () => {
   const classes = useStyles();
   return (
     <div style={{ textAlign: "center", padding: "0 10%" }}>
-      <p className={classes.intent}>Press the button and hold to talk:</p>
-      <span className={classes.intent}>Add</span>{" "}
+      <p className={classes.intent}>
+        Press the{" "}
+        <MicIcon
+          fontSize="small"
+          style={{
+            color: "#000",
+            borderRadius: "50%",
+            border: "2px solid #000",
+          }}
+        />{" "}
+        and hold to talk:
+      </p>
+      Try saying: <span className={classes.intent}>Add</span>{" "}
       {isIncome ? (
         <span className={classes.income}>Income</span>
       ) : (
