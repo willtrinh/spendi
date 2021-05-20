@@ -19,7 +19,7 @@ const Main = () => {
     <Card className={classes.cardShadow}>
       <CardContent>
         <Typography align="center" variant="h5">
-          Total Balance ${balance}
+          Total Balance <strong>${balance}</strong>
         </Typography>
         <Typography
           variant="subtitle1"

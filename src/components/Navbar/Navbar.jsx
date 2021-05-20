@@ -25,11 +25,9 @@ export default function Navbar() {
       <AppBar position="static" color="primary">
         <Toolbar>
           <img src={logo} height="60" width="60" alt="logo" />
-          <Typography
-            className={classes.title}
-            variant="h6"
-            noWrap
-          ></Typography>
+          <Typography className={classes.title} variant="h6" noWrap>
+            Spendy
+          </Typography>
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>

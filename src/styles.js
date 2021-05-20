@@ -11,6 +11,11 @@ export default makeStyles((theme) => ({
       display: 'none',
     },
   },
+  tablet: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
+  },
   main: {
     [theme.breakpoints.up('sm')]: {
     },
@@ -26,4 +31,10 @@ export default makeStyles((theme) => ({
       margin: theme.spacing(2),
     },
   },
+  button: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 10
+  }
 }));
