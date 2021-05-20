@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from "react";
 import {
   TextField,
@@ -24,8 +25,6 @@ import {
   incomeCategories,
   expenseCategories,
 } from "../../../constants/categories.js";
-// import moment from "moment";
-// import formatDate from "../../../utils/formatDate.js";
 const initialState = {
   amount: "",
   category: "",

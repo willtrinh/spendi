@@ -1,5 +1,5 @@
-const incomeColors = ['#52D726', '#FFEC00', '#FF7300', '#FF0000', '#007ED6', '#7CDDDD', '#9552EA'];
-const expenseColors = ['#52D726', '#FFEC00', '#FF7300', '#FF0000', '#007ED6', '#7CDDDD', '#9552EA', '#93F03B', '#F54F52', '#2D87BB', '#64C2A6', '#E6F69D'];
+const incomeColors = ['#f38181', '#fce38a', '#aa96da', '#95e1d3', '#f67280', '#c06c84', '#355c7d'];
+const expenseColors = ['#f38181', '#fce38a', '#eaffd0', '#aa96da', '#f67280', '#c06c84', '#355c7d', '#ff7171', '#d5ecc2', '#ffd3b4', '#ffaaa7', '#393e46'];
 
 export const incomeCategories = [
   { type: 'Business', amount: 0, color: incomeColors[0] },
