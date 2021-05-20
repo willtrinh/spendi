@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import {
   Card,
-  CardHeader,
   CardContent,
   Typography,
   Grid,
@@ -12,12 +11,12 @@ import useStyles from "./styles";
 import Form from "./Form/Form";
 import List from "./List/List";
 import InfoCard from "../InfoCard";
+
 const Main = () => {
   const classes = useStyles();
   const { balance } = useContext(AppContext);
   return (
-    <Card className={classes.root}>
-      <CardHeader title="Spendy" align="center" justify="center" />
+    <Card className={classes.cardShadow}>
       <CardContent>
         <Typography align="center" variant="h5">
           Total Balance ${balance}

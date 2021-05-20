@@ -24,10 +24,13 @@ export default function Navbar() {
     <MuiThemeProvider theme={theme}>
       <AppBar position="static" color="primary">
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Spendy.app
-          </Typography>
-          <img src="../../logo.svg" />
+          <img src={logo} height="60" width="60" alt="logo" />
+          <Typography
+            className={classes.title}
+            variant="h6"
+            noWrap
+          ></Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
