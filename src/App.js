@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { PushToTalkButton, PushToTalkButtonContainer, ErrorPanel } from '@speechly/react-ui';
+import { PushToTalkButton, ErrorPanel } from '@speechly/react-ui';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Details from './components/Details/Details';
 import Main from './components/Main/Main';

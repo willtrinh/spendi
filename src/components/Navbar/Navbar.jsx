@@ -26,7 +26,7 @@ export default function Navbar() {
         <Toolbar>
           <img src={logo} height="60" width="60" alt="logo" />
           <Typography className={classes.title} variant="h6" noWrap>
-            Spendy
+            Spendi
           </Typography>
 
           <div className={classes.search}>
