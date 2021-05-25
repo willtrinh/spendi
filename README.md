@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Spendi - Finance Tracker With Voice Assistant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Demo](https://spendi.netlify.app/)
 
 ## Available Scripts
 
