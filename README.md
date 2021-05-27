@@ -15,7 +15,7 @@ https://www.youtube.com/watch?v=A0PVJAPZKF8
 - _Spendi_ is a budget tracker that allows users to input their budget with ease using their own microphone.
 - My inspiration for the app was to remove the hassle of having the users manually filling out different fields for their spending.
 
-![Spendi App](https://raw.githubusercontent.com/willtrinh/spendi/master/src/assets/Spendi.jpg)
+![Spendi App](https://raw.githubusercontent.com/willtrinh/spendi/master/src/assets/Spendi.png)
 
 ## Tech Stack
 
