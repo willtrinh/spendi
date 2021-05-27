@@ -1,10 +1,65 @@
-# Spendi - Finance Tracker With Voice Assistant
+# Spendi - Budget Tracker With Voice Assistant
 
-[Live Demo](https://spendi.netlify.app/)
+## Live Demo
 
-## Available Scripts
+https://spendi.netlify.app/
 
-In the project directory, you can run:
+## Video Demo
+
+https://www.youtube.com/watch?v=A0PVJAPZKF8
+
+![Spendi App GIF](https://raw.githubusercontent.com/willtrinh/spendi/master/src/assets/Spendi.gif)
+
+## About
+
+- _Spendi_ is a budget tracker that allows users to input their budget with ease using their own microphone.
+- My inspiration for the app was to remove the hassle of having the users manually filling out different fields for their spending.
+
+![Spendi App](https://raw.githubusercontent.com/willtrinh/spendi/master/src/assets/Spendi.jpg)
+
+## Tech Stack
+
+- React
+- Node.js
+- Express
+- Speechly API
+- Chart.js
+
+## Getting Started
+
+To run the app on your local machine open your terminal follow the steps below:
+
+```
+
+git clone https://github.com/willtrinh/spendi.git
+
+cd into the recently cloned directory
+
+npm install
+
+npm start
+
+Open http://localhost:3000 to view it in the browser.
+```
+
+## User Stories
+
+- User should be able to `manually` add new transaction by filling in their income and expense in the form.
+- User should be able to `automatically` add new transaction by using their microphone.
+- User should be able to delete any specific transaction.
+- User should be able to see changes to their budget reflected on either income or expense doughnut chart.
+
+## Future Scope
+
+- User should be able to `automatically` delete any specific transaction.
+- User should be able to `manually` search for any transaction.
+- User should be able to `automatically` search for any transaction.
+
+## Available scripts
+
+### `npm install`
+
+Install required dependencies to run the app
 
 ### `npm start`
 
@@ -38,33 +93,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
