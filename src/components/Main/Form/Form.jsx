@@ -163,18 +163,6 @@ const Form = () => {
         />
       </Grid>
       <Grid item xs={6}>
-        {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDatePicker
-            id="date-picker-dialog"
-            label="Date"
-            format="MM/dd/yyyy"
-            value={parseISO(formData.date)}
-            onChange={handleDateChange}
-            KeyboardButtonProps={{
-              "aria-label": "change date",
-            }}
-          />
-        </MuiPickersUtilsProvider> */}
         <TextField
           fullWidth
           label="Date"
